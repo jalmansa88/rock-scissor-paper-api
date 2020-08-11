@@ -18,7 +18,7 @@ public class Game {
 	}
 	
 	public Round playRound() {
-		Round newPlayedRound = new Round(player1.getSelection(), player2.getSelection());
+		Round newPlayedRound = new Round(player1.showHand(), player2.showHand());
 		rounds.add(newPlayedRound);
 		return newPlayedRound;
 	}

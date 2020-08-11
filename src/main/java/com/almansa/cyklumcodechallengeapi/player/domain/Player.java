@@ -11,7 +11,7 @@ public class Player {
 		this.playerStrategy = playerStrategy;
 	}
 
-	public Shape getSelection() {
-		return playerStrategy.playHand();
+	public Shape showHand() {
+		return playerStrategy.makeDecision();
 	}
 }

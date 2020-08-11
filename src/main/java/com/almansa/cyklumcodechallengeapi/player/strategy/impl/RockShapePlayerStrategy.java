@@ -6,7 +6,7 @@ import com.almansa.cyklumcodechallengeapi.player.strategy.PlayerStrategy;
 public class RockShapePlayerStrategy implements PlayerStrategy{
 
 	@Override
-	public Shape playHand() {
+	public Shape makeDecision() {
 		return Shape.ROCK;
 	}
 

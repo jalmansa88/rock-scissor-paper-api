@@ -15,14 +15,14 @@ public class PlayerStrategyTest {
 	@Test
 	public void shouldReturnAlwaysRockShape() {
 		PlayerStrategy playerStrategy = new RockShapePlayerStrategy();
-		Shape shape = playerStrategy.playHand();
+		Shape shape = playerStrategy.makeDecision();
 		assertEquals(Shape.ROCK, shape);
 	}
 
 	@Test
 	public void shouldReturnRandomShape() {
 		PlayerStrategy playerStrategy = new RandomShapePlayerStrategy();
-		Shape shape = playerStrategy.playHand();
+		Shape shape = playerStrategy.makeDecision();
 		assertThat(shape).isIn(Shape.ROCK, Shape.PAPER, Shape.SCISSORS);
 	}
 }
