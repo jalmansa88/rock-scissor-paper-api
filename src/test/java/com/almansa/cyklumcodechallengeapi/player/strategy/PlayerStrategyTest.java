@@ -1,14 +1,14 @@
-package com.almansa.cyklumcodechallengeapi.strategy;
+package com.almansa.cyklumcodechallengeapi.player.strategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import com.almansa.cyklumcodechallengeapi.game.domain.Shape;
 import com.almansa.cyklumcodechallengeapi.player.strategy.PlayerStrategy;
 import com.almansa.cyklumcodechallengeapi.player.strategy.impl.RandomShapePlayerStrategy;
 import com.almansa.cyklumcodechallengeapi.player.strategy.impl.RockShapePlayerStrategy;
-import com.almansa.cyklumcodechallengeapi.shape.Shape;
 
 public class PlayerStrategyTest {
 

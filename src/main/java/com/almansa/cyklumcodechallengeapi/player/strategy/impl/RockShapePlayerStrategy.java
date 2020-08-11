@@ -1,7 +1,7 @@
 package com.almansa.cyklumcodechallengeapi.player.strategy.impl;
 
+import com.almansa.cyklumcodechallengeapi.game.domain.Shape;
 import com.almansa.cyklumcodechallengeapi.player.strategy.PlayerStrategy;
-import com.almansa.cyklumcodechallengeapi.shape.Shape;
 
 public class RockShapePlayerStrategy implements PlayerStrategy{
 
