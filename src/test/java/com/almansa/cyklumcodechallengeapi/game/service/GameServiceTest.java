@@ -21,6 +21,7 @@ import com.almansa.cyklumcodechallengeapi.game.repository.GameRepository;
 import com.almansa.cyklumcodechallengeapi.game.service.impl.GameServiceImpl;
 import com.almansa.cyklumcodechallengeapi.gamehistory.repository.GameHistoryRepository;
 import com.almansa.cyklumcodechallengeapi.round.domain.Round;
+import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
 
 @DisplayName("Test suite for GameService")
 @ExtendWith(MockitoExtension.class)
@@ -29,9 +30,11 @@ public class GameServiceTest {
 	private static final Long GAMESESSION_ID = 12345L;
 
 	@Mock
-	GameRepository gameRepository;
+	private GameRuleService gameRule;
 	@Mock
-	GameHistoryRepository gameHistoryRepository;
+	private GameRepository gameRepository;
+	@Mock
+	private GameHistoryRepository gameHistoryRepository;
 
 	@InjectMocks
 	private GameService gameService = new GameServiceImpl();

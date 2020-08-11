@@ -13,10 +13,13 @@ import com.almansa.cyklumcodechallengeapi.player.domain.Player;
 import com.almansa.cyklumcodechallengeapi.player.strategy.impl.RandomShapePlayerStrategy;
 import com.almansa.cyklumcodechallengeapi.player.strategy.impl.RockShapePlayerStrategy;
 import com.almansa.cyklumcodechallengeapi.round.domain.Round;
+import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
 
 @Service
 public final class GameServiceImpl implements GameService {
 	
+	@Autowired
+	private GameRuleService gameRule;
 	@Autowired
 	private GameRepository gameRepository;
 	@Autowired
@@ -49,7 +52,7 @@ public final class GameServiceImpl implements GameService {
 	private Game initGame() {
 		Player player1Random = new Player(new RandomShapePlayerStrategy());
 		Player player2Rock = new Player(new RockShapePlayerStrategy());
-		return new Game(player1Random, player2Rock);
+		return new Game(player1Random, player2Rock, gameRule);
 	}
 
 }
