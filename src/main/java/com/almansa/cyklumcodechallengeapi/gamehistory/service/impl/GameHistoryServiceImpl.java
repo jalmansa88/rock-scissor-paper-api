@@ -13,9 +13,13 @@ import com.almansa.cyklumcodechallengeapi.gamehistory.service.GameHistoryService
 @Component
 public class GameHistoryServiceImpl implements GameHistoryService {
 
-	@Autowired
 	private GameHistoryRepository gameHistoryRepository;
 	
+	@Autowired
+	public GameHistoryServiceImpl(GameHistoryRepository gameHistoryRepository) {
+		this.gameHistoryRepository = gameHistoryRepository;
+	}
+
 	@Override
 	public GameHistory getGameHistory() {
 		Collection<Round> rounds = gameHistoryRepository.getRounds();
