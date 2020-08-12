@@ -3,16 +3,17 @@ package com.almansa.cyklumcodechallengeapi.game.service;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.atMostOnce;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -27,6 +28,7 @@ import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
 public class GameServiceTest {
+
 	private static final Long GAMESESSION_ID = 12345L;
 
 	@Mock
@@ -36,14 +38,18 @@ public class GameServiceTest {
 	@Mock
 	private GameHistoryRepository gameHistoryRepository;
 
-	@InjectMocks
-	private GameService gameService = new GameServiceImpl();
+	private GameService gameService;
+	
+	@BeforeEach
+	public void setUp() {
+		gameService = new GameServiceImpl(gameRule, gameRepository, gameHistoryRepository);
+	}
 
 	@Test
 	public void shouldGetSessionGame() {
 		Game game = mock(Game.class);
 		when(gameRepository.getSessionGame(GAMESESSION_ID)).thenReturn(game);
-		
+
 		Game recoveredGame = gameService.getSessionGame(GAMESESSION_ID);
 
 		assertEquals(game, recoveredGame);
@@ -55,21 +61,30 @@ public class GameServiceTest {
 		Round playedRound = mock(Round.class);
 		when(gameRepository.getSessionGame(GAMESESSION_ID)).thenReturn(sessionGame);
 		when(sessionGame.playRound()).thenReturn(playedRound);
-		
+
 		gameService.playRound(GAMESESSION_ID);
-		
+
 		assertEquals(sessionGame, sessionGame);
 		verify(gameRepository, atMostOnce()).persistSessionGame(sessionGame, GAMESESSION_ID);
 		verify(gameHistoryRepository, atMostOnce()).persistRound(playedRound);
 	}
-	
+
 	@Test
 	public void shouldInitGameAndPlayRound() {
 		when(gameRepository.getSessionGame(GAMESESSION_ID)).thenReturn(null);
-		
+
 		Game newGame = gameService.playRound(GAMESESSION_ID);
-		
+
 		assertNotNull(newGame);
+	}
+
+	@Test
+	public void shouldClearSessionGame() {
+		doNothing().when(gameRepository).clearSessionGame(GAMESESSION_ID);
+
+		gameService.clearSessionGame(GAMESESSION_ID);
+
+		verify(gameRepository, atMostOnce()).clearSessionGame(GAMESESSION_ID);
 	}
 
 }

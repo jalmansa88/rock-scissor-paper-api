@@ -17,13 +17,20 @@ import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
 
 @Service
 public final class GameServiceImpl implements GameService {
-	
+
 	@Autowired
 	private GameRuleService gameRule;
 	@Autowired
 	private GameRepository gameRepository;
 	@Autowired
 	private GameHistoryRepository gameHistoryRepository;
+	
+	public GameServiceImpl(GameRuleService gameRule, GameRepository gameRepository,
+			GameHistoryRepository gameHistoryRepository) {
+		this.gameRule = gameRule;
+		this.gameRepository = gameRepository;
+		this.gameHistoryRepository = gameHistoryRepository;
+	}
 
 	@Override
 	public Game getSessionGame(Long sessionId) {
@@ -37,6 +44,11 @@ public final class GameServiceImpl implements GameService {
 		gameRepository.persistSessionGame(sessionGame, sessionId);
 		gameHistoryRepository.persistRound(playedRound);
 		return sessionGame;
+	}
+
+	@Override
+	public void clearSessionGame(Long sessionId) {
+		gameRepository.clearSessionGame(sessionId);
 	}
 
 	private Game findOrInitSessionGame(Long sessionId) {

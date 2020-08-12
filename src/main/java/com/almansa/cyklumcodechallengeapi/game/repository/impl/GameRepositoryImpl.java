@@ -9,10 +9,10 @@ import com.almansa.cyklumcodechallengeapi.game.domain.Game;
 import com.almansa.cyklumcodechallengeapi.game.repository.GameRepository;
 
 @Component
-public class GameRepositoryImpl implements GameRepository{
+public class GameRepositoryImpl implements GameRepository {
 
 	private Map<Long, Game> sessionGames;
-	
+
 	public GameRepositoryImpl() {
 		this.sessionGames = new HashMap<Long, Game>();
 	}
@@ -25,5 +25,10 @@ public class GameRepositoryImpl implements GameRepository{
 	@Override
 	public void persistSessionGame(Game game, Long sessionId) {
 		sessionGames.put(sessionId, game);
+	}
+
+	@Override
+	public void clearSessionGame(Long sessionId) {
+		sessionGames.remove(sessionId);
 	}
 }
