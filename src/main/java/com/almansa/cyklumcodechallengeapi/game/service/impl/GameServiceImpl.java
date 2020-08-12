@@ -41,7 +41,7 @@ public final class GameServiceImpl implements GameService {
 	public Game playRound(Long sessionId) {
 		Game sessionGame = findOrInitSessionGame(sessionId);
 		Round playedRound = sessionGame.playRound();
-		gameRepository.persistSessionGame(sessionGame, sessionId);
+		gameRepository.persistSessionGame(sessionId, sessionGame);
 		gameHistoryRepository.persistRound(playedRound);
 		return sessionGame;
 	}

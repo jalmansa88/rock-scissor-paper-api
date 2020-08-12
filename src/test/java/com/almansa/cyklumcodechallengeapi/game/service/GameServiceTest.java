@@ -65,7 +65,7 @@ public class GameServiceTest {
 		gameService.playRound(GAMESESSION_ID);
 
 		assertEquals(sessionGame, sessionGame);
-		verify(gameRepository, atMostOnce()).persistSessionGame(sessionGame, GAMESESSION_ID);
+		verify(gameRepository, atMostOnce()).persistSessionGame(GAMESESSION_ID, sessionGame);
 		verify(gameHistoryRepository, atMostOnce()).persistRound(playedRound);
 	}
 

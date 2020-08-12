@@ -31,7 +31,7 @@ public class GameRepositoryTest {
 	public void shouldPersistAndReturnSessionGame() {
 		Game sessionGame = mock(Game.class);
 
-		gameRepository.persistSessionGame(sessionGame, GAMESESSION_ID);
+		gameRepository.persistSessionGame(GAMESESSION_ID, sessionGame);
 		Game returnedGame = gameRepository.getSessionGame(GAMESESSION_ID);
 
 		assertEquals(sessionGame, returnedGame);
@@ -41,7 +41,7 @@ public class GameRepositoryTest {
 	public void shouldPersistAndClearSessionGame() {
 		Game sessionGame = mock(Game.class);
 
-		gameRepository.persistSessionGame(sessionGame, GAMESESSION_ID);
+		gameRepository.persistSessionGame(GAMESESSION_ID, sessionGame);
 		gameRepository.clearSessionGame(GAMESESSION_ID);
 		Game recoveredGame = gameRepository.getSessionGame(GAMESESSION_ID);
 

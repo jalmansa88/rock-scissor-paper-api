@@ -23,7 +23,7 @@ public class GameRepositoryImpl implements GameRepository {
 	}
 
 	@Override
-	public void persistSessionGame(Game game, Long sessionId) {
+	public void persistSessionGame(Long sessionId, Game game) {
 		sessionGames.put(sessionId, game);
 	}
 
