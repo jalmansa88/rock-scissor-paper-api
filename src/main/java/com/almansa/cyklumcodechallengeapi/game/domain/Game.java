@@ -3,9 +3,8 @@ package com.almansa.cyklumcodechallengeapi.game.domain;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.almansa.cyklumcodechallengeapi.game.rule.GameRule;
 import com.almansa.cyklumcodechallengeapi.player.domain.Player;
-import com.almansa.cyklumcodechallengeapi.round.domain.Round;
-import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Game {
@@ -13,13 +12,13 @@ public class Game {
 	private Collection<Round> rounds;
 
 	@JsonIgnore
-	private GameRuleService gameRules;
+	private GameRule gameRules;
 	@JsonIgnore
 	private Player player1;
 	@JsonIgnore
 	private Player player2;
 
-	public Game(Player player1, Player player2, GameRuleService gameRules) {
+	public Game(Player player1, Player player2, GameRule gameRules) {
 		rounds = new ArrayList<>();
 		this.player1 = player1;
 		this.player2 = player2;

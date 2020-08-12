@@ -5,9 +5,8 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Component;
 
-import com.almansa.cyklumcodechallengeapi.gamehistory.domain.GameHistory;
+import com.almansa.cyklumcodechallengeapi.game.domain.Round;
 import com.almansa.cyklumcodechallengeapi.gamehistory.repository.GameHistoryRepository;
-import com.almansa.cyklumcodechallengeapi.round.domain.Round;
 
 @Component
 public class GameHistoryRepositoryImpl implements GameHistoryRepository {
@@ -24,23 +23,7 @@ public class GameHistoryRepositoryImpl implements GameHistoryRepository {
 	}
 
 	@Override
-	public GameHistory getHistory() {
-		return null;
-	}
-
-	public int getNumTotalRounds() {
-		return rounds.size();
-	}
-
-	public int getNumFirstPlayerWins() {
-		return 0;
-	}
-
-	public int getNumSecondPlayerWins() {
-		return 0;
-	}
-
-	public int getNumDraws() {
-		return 0;
+	public Collection<Round> getRounds() {
+		return rounds;
 	}
 }

@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.almansa.cyklumcodechallengeapi.game.domain.Game;
+import com.almansa.cyklumcodechallengeapi.game.domain.Round;
 import com.almansa.cyklumcodechallengeapi.game.repository.GameRepository;
+import com.almansa.cyklumcodechallengeapi.game.rule.GameRule;
 import com.almansa.cyklumcodechallengeapi.game.service.GameService;
 import com.almansa.cyklumcodechallengeapi.gamehistory.repository.GameHistoryRepository;
 import com.almansa.cyklumcodechallengeapi.player.domain.Player;
 import com.almansa.cyklumcodechallengeapi.player.strategy.impl.RandomShapePlayerStrategy;
 import com.almansa.cyklumcodechallengeapi.player.strategy.impl.RockShapePlayerStrategy;
-import com.almansa.cyklumcodechallengeapi.round.domain.Round;
-import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
 
 @Service
 public final class GameServiceImpl implements GameService {
 
 	@Autowired
-	private GameRuleService gameRule;
+	private GameRule gameRule;
 	@Autowired
 	private GameRepository gameRepository;
 	@Autowired
 	private GameHistoryRepository gameHistoryRepository;
 	
-	public GameServiceImpl(GameRuleService gameRule, GameRepository gameRepository,
+	public GameServiceImpl(GameRule gameRule, GameRepository gameRepository,
 			GameHistoryRepository gameHistoryRepository) {
 		this.gameRule = gameRule;
 		this.gameRepository = gameRepository;

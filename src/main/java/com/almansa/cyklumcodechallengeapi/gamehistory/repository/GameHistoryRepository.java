@@ -1,9 +1,10 @@
 package com.almansa.cyklumcodechallengeapi.gamehistory.repository;
 
-import com.almansa.cyklumcodechallengeapi.gamehistory.domain.GameHistory;
-import com.almansa.cyklumcodechallengeapi.round.domain.Round;
+import java.util.Collection;
+
+import com.almansa.cyklumcodechallengeapi.game.domain.Round;
 
 public interface GameHistoryRepository {
 	public void persistRound(Round round);
-	public GameHistory getHistory();
+	public Collection<Round> getRounds();
 }

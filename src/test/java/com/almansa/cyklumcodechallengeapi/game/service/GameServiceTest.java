@@ -18,11 +18,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.almansa.cyklumcodechallengeapi.game.domain.Game;
+import com.almansa.cyklumcodechallengeapi.game.domain.Round;
 import com.almansa.cyklumcodechallengeapi.game.repository.GameRepository;
+import com.almansa.cyklumcodechallengeapi.game.rule.GameRule;
 import com.almansa.cyklumcodechallengeapi.game.service.impl.GameServiceImpl;
 import com.almansa.cyklumcodechallengeapi.gamehistory.repository.GameHistoryRepository;
-import com.almansa.cyklumcodechallengeapi.round.domain.Round;
-import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
 
 @DisplayName("Test suite for GameService")
 @ExtendWith(MockitoExtension.class)
@@ -32,7 +32,7 @@ public class GameServiceTest {
 	private static final Long GAMESESSION_ID = 12345L;
 
 	@Mock
-	private GameRuleService gameRule;
+	private GameRule gameRule;
 	@Mock
 	private GameRepository gameRepository;
 	@Mock

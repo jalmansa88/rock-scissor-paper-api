@@ -1,22 +1,22 @@
-package com.almansa.cyklumcodechallengeapi.round.domain;
+package com.almansa.cyklumcodechallengeapi.game.domain;
 
-import com.almansa.cyklumcodechallengeapi.game.domain.Shape;
-import com.almansa.cyklumcodechallengeapi.rule.GameRuleService;
+import com.almansa.cyklumcodechallengeapi.game.rule.GameRule;
+import com.almansa.cyklumcodechallengeapi.player.domain.RoundWinner;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Round {
 	private Shape player1Selection;
 	private Shape player2Selection;
-	private int winner;
+	private RoundWinner winner;
 
-	public Round(Shape player1Selection, Shape player2Selection, GameRuleService rule) {
+	public Round(Shape player1Selection, Shape player2Selection, GameRule rule) {
 		this.player1Selection = player1Selection;
 		this.player2Selection = player2Selection;
 		this.winner = rule.getWinner(player1Selection, player2Selection);
 	}
 
 	@JsonProperty("WINNER")
-	public int getWinner() {
+	public RoundWinner getWinner() {
 		return winner;
 	}
 

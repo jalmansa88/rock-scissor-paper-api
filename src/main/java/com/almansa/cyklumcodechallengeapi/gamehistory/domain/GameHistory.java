@@ -1,5 +1,42 @@
 package com.almansa.cyklumcodechallengeapi.gamehistory.domain;
 
-public class GameHistory {
+import java.util.Collection;
 
+import com.almansa.cyklumcodechallengeapi.game.domain.Round;
+import com.almansa.cyklumcodechallengeapi.player.domain.RoundWinner;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class GameHistory {
+	private Collection<Round> rounds;
+
+	public GameHistory(Collection<Round> rounds) {
+		this.rounds = rounds;
+	}
+
+	@JsonProperty("TOTAL_ROUNDS")
+	public int getNumTotalRounds() {
+		return rounds.size();
+	}
+
+	@JsonProperty("NUM_DRAWS")
+	public int getNumDraws() {
+		return getNumOfRoundsResultsByWinnerCode(RoundWinner.DRAW);
+	}
+
+	@JsonProperty("PLAYER_ONE_WINS")
+	public int getNumWinsPlayerOne() {
+		return getNumOfRoundsResultsByWinnerCode(RoundWinner.PLAYER_ONE);
+	}
+
+	@JsonProperty("PLAYER_TWO_WINS")
+	public int getNumWinsPlayerTwo() {
+		return getNumOfRoundsResultsByWinnerCode(RoundWinner.PLAYER_TWO);
+	}
+
+	private int getNumOfRoundsResultsByWinnerCode(RoundWinner winner) {
+		return rounds.stream()
+				.filter(round -> round.getWinner() == winner)
+				.mapToInt(r -> 1)
+				.sum();
+	}
 }
