@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.almansa</groupId>
-	<artifactId>cyklum-codechallenge-api</artifactId>
+	<artifactId>ciklum-codechallenge-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cyklum-codechallenge-api</name>
+	<name>ciklum-codechallenge-api</name>
 	<description>API for Rock, Paper Scissors code challenge</description>
 
 	<properties>
