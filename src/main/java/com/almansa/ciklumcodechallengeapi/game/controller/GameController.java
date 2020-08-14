@@ -20,8 +20,8 @@ public class GameController {
 	private GameService gameService;
 	
 	@GetMapping
-	public Game getGameSession(@RequestParam Long sessionId) {
-		return gameService.getSessionGame(sessionId);
+	public ResponseWrapper getGameSession(@RequestParam Long sessionId) {
+		return new ResponseWrapper(gameService.getSessionGame(sessionId));
 	}
 	
 	@PostMapping("/play")
