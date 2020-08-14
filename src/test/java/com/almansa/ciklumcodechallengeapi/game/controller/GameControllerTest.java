@@ -18,6 +18,7 @@ import com.almansa.ciklumcodechallengeapi.game.domain.Game;
 import com.almansa.ciklumcodechallengeapi.game.rule.impl.GameRuleImpl;
 import com.almansa.ciklumcodechallengeapi.game.service.GameService;
 import com.almansa.ciklumcodechallengeapi.player.domain.Player;
+import com.almansa.ciklumcodechallengeapi.player.domain.RoundWinner;
 import com.almansa.ciklumcodechallengeapi.player.strategy.impl.RockShapePlayerStrategy;
 
 @WebMvcTest(GameController.class)
@@ -46,7 +47,7 @@ public class GameControllerTest {
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().contentType("application/json"))
-			.andExpect(content().string(containsString("DRAW")));
+			.andExpect(content().string(containsString(RoundWinner.DRAW.getName())));
 	}
 
 	@Test

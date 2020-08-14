@@ -26,9 +26,9 @@ public class GameHistoryTest {
 
 		Collection<Round> rounds = Arrays.asList(round1, round2, round3);
 
-		when(round1.getWinner()).thenReturn(RoundWinner.PLAYER_ONE);
-		when(round2.getWinner()).thenReturn(RoundWinner.PLAYER_ONE);
-		when(round3.getWinner()).thenReturn(RoundWinner.DRAW);
+		when(round1.getWinner()).thenReturn(RoundWinner.PLAYER_ONE.getName());
+		when(round2.getWinner()).thenReturn(RoundWinner.PLAYER_ONE.getName());
+		when(round3.getWinner()).thenReturn(RoundWinner.DRAW.getName());
 
 		gameHistory = new GameHistory(rounds);
 	}

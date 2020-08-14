@@ -35,7 +35,7 @@ public class GameHistory {
 
 	private int getNumOfRoundsResultsByWinnerCode(RoundWinner winner) {
 		return rounds.stream()
-				.filter(round -> round.getWinner() == winner)
+				.filter(round -> round.getWinner().equals(winner.getName()))
 				.mapToInt(r -> 1)
 				.sum();
 	}

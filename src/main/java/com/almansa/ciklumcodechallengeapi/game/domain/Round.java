@@ -16,8 +16,8 @@ public class Round {
 	}
 
 	@JsonProperty("WINNER")
-	public RoundWinner getWinner() {
-		return winner;
+	public String getWinner() {
+		return winner.getName();
 	}
 
 	@JsonProperty("P1_HAND")
