@@ -13,7 +13,7 @@ _REST API for Rock Scissor Paper game WebApp_
 - [Java JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) as programming language and platform
 - [JUnit Jupiter](https://junit.org/junit5/docs/current/user-guide/) as testing framework
 - [Mockito](https://site.mockito.org/) as mocking framework
-- [Maven](https://maven.apache.org/) as dependency and builing tool
+- [Maven](https://maven.apache.org/) as dependency and building tool
 
 ## Notes
 - The main goal of the project is to implement a clean code, arquitecture and design, using patterns and easy testeable code. The same result could be fulfilled using a simpler and faster design. However, a balanced between reusability and speed was a requirement.
